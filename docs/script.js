@@ -1,3 +1,7 @@
+const video = document.getElementById("video");
+
+const list = document.getElementById("list");
+
 function playM3u8(url) {
   if (Hls.isSupported()) {
     var video = document.getElementById("video");
@@ -14,7 +18,6 @@ function playM3u8(url) {
     document.title = url;
   }
 }
-
 /* View in fullscreen */
 function openFullscreen(elem) {
   if (elem.requestFullscreen) {
@@ -37,11 +40,10 @@ function closeFullscreen(elem) {
   }
 }
 
-const list = document.getElementById("list");
 
 function renderItem(data) {
-  
-  
+
+
 
   let template = document.getElementById("item-template");
   let item = template.content.cloneNode(true);
@@ -80,16 +82,18 @@ function renderPlayButton(label, url) {
 }
 
 function search(keyword) {
- const searchLoading = document.querySelector('.search-loading');
-   const searchError = document.querySelector('.search-error');
+  list.innerHTML = '';
+
+  const searchLoading = document.querySelector('.search-loading');
+  const searchError = document.querySelector('.search-error');
   searchLoading.hidden = false;
   fetch("https://taopianapi.com/home/cjapi/as/mc/vod/json/m3u8?wd=" + keyword)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-    searchLoading.hidden = true;
-    
+      searchLoading.hidden = true;
+
       var items = data.data;
 
       items.forEach((item) => {
@@ -107,10 +111,10 @@ searchForm.addEventListener("submit", (e) => {
   search(searchInput.value);
 });
 
-const video = document.getElementById("video");
+
 
 document.addEventListener('click', (e) => {
-  if(e.target.classList.contains('play-button')) {
+  if (e.target.classList.contains('play-button')) {
     playM3u8(e.target.dataset.url);
   }
 });
@@ -120,9 +124,9 @@ video.addEventListener('fullscreenchange', (event) => {
   // is in fullscreen mode if there is one. If not, the value
   // of the property is null.
   if (document.fullscreenElement) {
-    
+
   } else {
     video.pause();
-   video.hidden = true;
+    video.hidden = true;
   }
 });
