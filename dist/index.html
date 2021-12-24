@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Cloud Stone</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="page">
+
+<video id="video" controls hidden></video>
+
+<h1>🍏苹果电影院🍎</h1>
+
+<div id="search">
+  <form class="search-form"><input class="search-input" type="search" value="Search"></form>
+</div>
+
+<template id="item-template">
+  <div class="item">
+    <div class="media">
+      <img class="pic" src="" alt="">
+    </div>
+    <div class="content">
+      <h2><span class="name"></span> <span class="date"></span></h2>
+       <div class="meta">
+      <p> 地区 <span class="area"></span> <span class="lang"></span></p>
+      <p> 导演 <span class="director"></span></p>
+      <p> 演员 <span class="actor"></span></p>
+      </div>
+      <p class="play-buttons"></p>
+    </div>
+</template>
+
+  <div class="search-loading" hidden>正在搜索</div>
+  <div class="search-error" hidden>搜索出错</div>
+<div id="list">
+</div>
+  </div>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/hls.js@latest'></script><script  src="./script.js"></script>
+
+</body>
+</html>
